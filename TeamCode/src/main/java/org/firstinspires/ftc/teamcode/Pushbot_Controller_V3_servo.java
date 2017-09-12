@@ -57,9 +57,9 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot;
 public class Pushbot_Controller_V3_servo extends OpMode {
 
     /* Declare OpMode members. */
-    HardwareGompersV1_Servos robot1       = new HardwareGompersV1_Servos();
-    double          armPosition     = robot1.ARM_HOME;                   // Servo safe position
-    double          clawPosition    = robot1.CLAW_HOME;                  // Servo safe position
+    HardwareGompersV1_Servos robot_servo       = new HardwareGompersV1_Servos();
+    double          armPosition     = robot_servo.ARM_HOME;                   // Servo safe position
+    double          clawPosition    = robot_servo.CLAW_HOME;                  // Servo safe position
     final double    CLAW_SPEED      = 0.01 ;                            // sets rate to move servo
     final double    ARM_SPEED       = 0.01 ;
 
@@ -84,7 +84,7 @@ public class Pushbot_Controller_V3_servo extends OpMode {
          */
 
 
-        robot1.init(hardwareMap);
+        robot_servo.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -127,11 +127,11 @@ public class Pushbot_Controller_V3_servo extends OpMode {
         //ballPusher   = -gamepad1.right_trigger - gamepad1.left_trigger;
 
         if(gamepad1.left_bumper) { //feed out
-            robot1.ballPusher.setPower(-0.9);
+            robot_servo.ballPusher.setPower(-0.9);
         }else if (gamepad1.right_bumper) {  //feed in
-            robot1.ballPusher.setPower(0.9);
+            robot_servo.ballPusher.setPower(0.9);
         }else {
-            robot1.ballPusher.setPower(0.0);
+            robot_servo.ballPusher.setPower(0.0);
         }
 
         // For CR Servos on MR/HiTechnic hardware, internal positions relate to speed as follows:
@@ -168,8 +168,8 @@ public class Pushbot_Controller_V3_servo extends OpMode {
             right /= max;
 
         }
-        robot1.leftMotor.setPower(left);
-        robot1.rightMotor.setPower(right);
+        robot_servo.leftMotor.setPower(left);
+        robot_servo.rightMotor.setPower(right);
 //        robot.ballPusher.setPower(ballPusher);
         // Use gamepad left & right Bumpers to open and close the claw
 //        if (gamepad1.right_bumper)
