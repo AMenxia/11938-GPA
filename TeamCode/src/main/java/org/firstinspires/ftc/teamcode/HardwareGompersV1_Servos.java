@@ -20,7 +20,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
    * Motor channel:  leftMotor:       "left_Motor"              Left wheel motor
    * Motor channel:  rightMotor:      "right_Motor"             Right wheel motor
    * Motor channel:  ballPusher:      "ball_Pusher"             Ejects Balls onto ramp
-   * Servo channel:  elevator:        "elevator"                Lifting up cap ball
+   * Servo channel:  hand:        "hand"                Lifting up cap ball
 */
 
   public class HardwareGompersV1_Servos
@@ -28,12 +28,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
       /* Public OpMode members. */
       public DcMotor leftMotor;
       public DcMotor rightMotor;
-      public Servo elevator;
+      public Servo hand;
       public DcMotor ballPusher;
       public ColorSensor colorsensor;
 
 
-      public final static double ARM_HOME = 0.2;
+      public final static double ARM_HOME = 0.01;
       public final static double CLAW_HOME = 0.2;
       public final static double ARM_MIN_RANGE  = 0.20;
       public final static double ARM_MAX_RANGE  = 0.90;
@@ -69,11 +69,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
           /*Define and initialize servos*/
-          elevator = hwMap.servo.get("elevator");
+          hand = hwMap.servo.get("hand");
 
 
           /*Adjust Servos to Beginning Position*/
-          elevator.setPosition(MID_SERVO);
+          hand.setPosition(MID_SERVO);
 
 
           /*Set Motors to Foward/Reverse*/
@@ -99,7 +99,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
           /*Define and initialize ALL installed servos.*/
-          elevator = hwMap.servo.get("elevator");
+          hand = hwMap.servo.get("hand");
           //leftClaw.setPosition(MID_SERVO);
           //rightClaw.setPosition(MID_SERVO);
       }

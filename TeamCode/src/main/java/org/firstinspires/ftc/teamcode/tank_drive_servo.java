@@ -36,6 +36,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot;
 
@@ -54,12 +55,12 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot;
 
 @TeleOp(name="TankDrive_Servo", group="Pushbot")
 //@Disabled
-public class Pushbot_Controller_V3_servo extends OpMode {
+public class tank_drive_servo extends OpMode {
 
     /* Declare OpMode members. */
-    HardwareGompersV1_Servos robot_servo       = new HardwareGompersV1_Servos();
-    double          armPosition     = robot_servo.ARM_HOME;                   // Servo safe position
-    double          clawPosition    = robot_servo.CLAW_HOME;                  // Servo safe position
+    HardwareGompersV1_Servos robot_S       = new HardwareGompersV1_Servos();
+    double          armPosition     = robot_S.ARM_HOME;                   // Servo safe position
+    double          clawPosition    = robot_S.CLAW_HOME;                  // Servo safe position
     final double    CLAW_SPEED      = 0.01 ;                            // sets rate to move servo
     final double    ARM_SPEED       = 0.01 ;
 
@@ -70,9 +71,9 @@ public class Pushbot_Controller_V3_servo extends OpMode {
     DcMotor leftMotor;
     DcMotor rightMotor;
     DcMotor ballPusher;
-    Servo elevator;
+    Servo hand;
 //    DcMotor Catapult;
-//    CRServo Elevator;
+//    CRServo hand;
 //    static final double DOWN = -.9;
 //    static final double UP = .9;
     // * Code to run ONCE when the driver hits INIT
@@ -84,7 +85,7 @@ public class Pushbot_Controller_V3_servo extends OpMode {
          */
 
 
-        robot_servo.init(hardwareMap);
+        robot_S.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -126,13 +127,29 @@ public class Pushbot_Controller_V3_servo extends OpMode {
         *           -          CONTROLLER CONFIGURATION^^^*/
         //ballPusher   = -gamepad1.right_trigger - gamepad1.left_trigger;
 
+
         if(gamepad1.left_bumper) { //feed out
-            robot_servo.ballPusher.setPower(-0.9);
+            robot_S.ballPusher.setPower(-0.9);
         }else if (gamepad1.right_bumper) {  //feed in
-            robot_servo.ballPusher.setPower(0.9);
-        }else {
-            robot_servo.ballPusher.setPower(0.0);
+            robot_S.ballPusher.setPower(0.9);
+        }else
+        {
+            robot_S.ballPusher.setPower(0.0);
         }
+        if (gamepad1.y){
+            //robot_S.hand.setPosition(0.01);
+            armPosition -= ARM_SPEED;
+        }
+        else if (gamepad1.a){
+            //robot_S.hand.setPosition(0.90);
+            armPosition += ARM_SPEED;
+        }
+        // Move both servos to new position.
+        armPosition  = Range.clip(armPosition, robot_S.ARM_MIN_RANGE, robot_S.ARM_MAX_RANGE);
+        robot_S.hand.setPosition(armPosition);
+/*        clawPosition = Range.clip(clawPosition, robot_S.CLAW_MIN_RANGE, robot_S
+                .CLAW_MAX_RANGE);
+        robot_S.hand.setPosition(clawPosition);*/
 
         // For CR Servos on MR/HiTechnic hardware, internal positions relate to speed as follows:
         //
@@ -140,9 +157,9 @@ public class Pushbot_Controller_V3_servo extends OpMode {
         //      128 == stopped
         //      255 == full speed forward
         //If no work try this ^^^^^^^^^
-//        if(gamepad1.y) { //Elevator up
-//            robot.Elevator.setPower(UP);
-//        }else if (gamepad1.a) {  //Elevator Down (Ejection if Grabbed wrong ball)
+//        if(gamepad1.y) { //hand up
+//            robot.hand.setPower(UP);
+//        }else if (gamepad1.a) {  //hand Down (Ejection if Grabbed wrong ball)
 //            robot.ballPusher.setPower(DOWN);
 //        }else {
 //            robot.ballPusher.setPower(0.0);
@@ -168,8 +185,8 @@ public class Pushbot_Controller_V3_servo extends OpMode {
             right /= max;
 
         }
-        robot_servo.leftMotor.setPower(left);
-        robot_servo.rightMotor.setPower(right);
+        robot_S.leftMotor.setPower(left);
+        robot_S.rightMotor.setPower(right);
 //        robot.ballPusher.setPower(ballPusher);
         // Use gamepad left & right Bumpers to open and close the claw
 //        if (gamepad1.right_bumper)

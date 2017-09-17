@@ -70,7 +70,7 @@ public class PushbotAutoDriveToLine_Linear_V4 extends LinearOpMode {
     HardwareGompersV0_Integrated robot = new HardwareGompersV0_Integrated();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
     // could also use HardwarePushbotMatrix class.
-    ColorSensor ColorSensor;      // Primary LEGO Light sensor,
+	private ColorSensor ColorSensor;      // Primary LEGO Light sensor,
     // OpticalDistanceSensor   lightSensor;   // Alternative MR ODS sensor
 
     static final double     COUNTS_PER_MOTOR_REV   = 1440 ;    // eg: TETRIX Motor Encoder
