@@ -34,6 +34,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpModeRegistrar;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -56,8 +57,10 @@ import static android.os.SystemClock.sleep;
 
 @Autonomous(name="Auto: ManueverBlue", group="Autos")  // @Autonomous(...) is the other common choice
 //@Disabled
+
 public class ManueverBlue extends OpMode
 {
+
     /* Declare OpMode members. */
     /* Declare OpMode members. */
     HardwareGompersV0_Integrated robot   = new HardwareGompersV0_Integrated();   // Use a Pushbot's hardware

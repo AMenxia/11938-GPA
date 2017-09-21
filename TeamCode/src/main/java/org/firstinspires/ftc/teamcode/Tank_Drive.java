@@ -108,7 +108,7 @@ public class Tank_Drive extends OpMode {
 
         left = gamepad1.left_stick_y;
         right = -gamepad1.right_stick_y;
-        //ballPusher   = -gamepad1.right_trigger - gamepad1.left_trigger;
+        /*ballPusher   = gamepad1.righ*/
         if(gamepad1.y){
             robot.ballPusher.setPower(-0.9);
         }else if (gamepad1.a) {
