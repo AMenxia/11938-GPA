@@ -45,6 +45,7 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
+@TeleOp(name="1_Servo", group="Pushbot")
 //@Disabled
 public class servo_a_y extends OpMode {
 
