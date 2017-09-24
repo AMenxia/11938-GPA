@@ -56,7 +56,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
           rightMotor    = hwMap.dcMotor.get("right_Motor");
           //ExtraFutureMotor    = hwMap.dcMotor.get("FutureMotor");
           ballPusher    = hwMap.dcMotor.get("ball_Pusher");
-          colorsensor = hwMap.colorSensor.get("color_sensor");
+          //colorsensor = hwMap.colorSensor.get("color_sensor");
 
 
           /*Define and initialize servos*/
@@ -73,7 +73,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
           //ExtraFutureMotor.setDirection(DcMotor.Direction.FORWARD);
           ballPusher.setDirection(DcMotor.Direction.FORWARD);
 
-          /*Set all motors to zero power*/
+          /*Set al;[[l motors to zero power*/
           leftMotor.setPower(0.00);
           rightMotor.setPower(0.00);
           ballPusher.setPower(0.00);

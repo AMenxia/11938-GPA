@@ -65,7 +65,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  */
 
 @Autonomous(name="Beacon Try 2", group="Auto")
-//@Disabled
+@Disabled
 public class PushbotAutoDriveToLine_Linear_V2 extends LinearOpMode {
 
     /* Declare OpMode members. */

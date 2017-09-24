@@ -29,13 +29,12 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.ConceptNullOp;
-import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSensor;
 
 
 /**
@@ -64,9 +63,10 @@ public class FtcOpModeRegister implements OpModeRegister {
      * @see com.qualcomm.robotcore.eventloop.opmode.Autonomous
      */
     public void register(OpModeManager manager) {
-        manager.register("Tank_Drive_SERVO", tank_drive_servo.class);
-        manager.register("Tank_Drive",Tank_Drive.class);
-        manager.register("Color Sensor", SensorMRColor.class);
+        //manager.register("Tank_Drive_SERVO", tank_drive_servo.class);
+        //manager.register("Tank_Drive",Tank_Drive.class);
+       // manager.register("Color Sensor", SensorMRColor.class);
+        //manager.register("1 Servo A Y,", servo_a_y.class);
         /**
          * Any manual OpMode class registrations should go here.
          */
