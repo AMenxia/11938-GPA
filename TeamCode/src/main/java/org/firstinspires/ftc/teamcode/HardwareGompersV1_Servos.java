@@ -37,8 +37,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
       public final static double CLAW_HOME = 0.2;
       public final static double ARM_MIN_RANGE  = 0.20;
       public final static double ARM_MAX_RANGE  = 0.90;
-      public final static double CLAW_MIN_RANGE  = 0.20;
-      public final static double CLAW_MAX_RANGE  = 0.7;
+      public final static double CLAW_MIN_RANGE  = 0.09;
+      public final static double CLAW_MAX_RANGE  = 0.99;
 
       //public DcMotor ExtraFutureMotor;
 
@@ -65,7 +65,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
           rightMotor    = hwMap.dcMotor.get("right_Motor");
           //ExtraFutureMotor    = hwMap.dcMotor.get("FutureMotor");
           ballPusher    = hwMap.dcMotor.get("ball_Pusher");
-          //colorsensor = hwMap.colorSensor.get("color_sensor");
+          colorsensor = hwMap.colorSensor.get("color_sensor");
 
 
           /*Define and initialize servos*/
@@ -115,7 +115,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
       public void waitForTick(long periodMs) {
 
           long  remaining = periodMs - (long)period.milliseconds();
-
           // sleep for the remaining portion of the regular cycle period.
           if (remaining > 0) {
               try {
