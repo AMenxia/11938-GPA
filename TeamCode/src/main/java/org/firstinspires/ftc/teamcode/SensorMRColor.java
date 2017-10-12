@@ -36,10 +36,12 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.qualcomm.ftcrobotcontroller.R;
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cColorSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 /*
  *
@@ -61,9 +63,15 @@ public class SensorMRColor extends LinearOpMode {
   ColorSensor colorSensor;    // Hardware Device Object
 
 
+  HardwareGompersV0_Integrated robot = new HardwareGompersV0_Integrated();
+  DcMotor leftMotor;
+
+  DcMotor rightMotor;
   @Override
   public void runOpMode() {
 
+	  ModernRoboticsI2cColorSensor mrcolor;
+	  mrcolor = (ModernRoboticsI2cColorSensor) colorSensor;
     // hsvValues is an array that will hold the hue, saturation, and value information.
     float hsvValues[] = {0F,0F,0F};
 
@@ -83,7 +91,8 @@ public class SensorMRColor extends LinearOpMode {
 
     // get a reference to our ColorSensor object.
     colorSensor = hardwareMap.colorSensor.get("Color_Sensor");
-
+    leftMotor    = hardwareMap.dcMotor.get("left_Motor");
+    rightMotor    = hardwareMap.dcMotor.get("right_Motor");
     // Set the LED in the beginning
     colorSensor.enableLed(bLedOn);
 
@@ -104,6 +113,13 @@ public class SensorMRColor extends LinearOpMode {
         bLedOn = !bLedOn;
         colorSensor.enableLed(bLedOn);
       }
+      if((colorSensor.blue() > colorSensor.green()) && (colorSensor.blue() > colorSensor.red())){
+
+        robot.leftMotor.setPower(.5);
+        robot.rightMotor.setPower(.5);
+
+      }
+
 
       // update previous state variable.
       bPrevState = bCurrState;

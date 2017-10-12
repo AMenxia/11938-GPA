@@ -26,12 +26,13 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.ConceptVuforiaNavigation;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
@@ -66,7 +67,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 
 @Autonomous(name="Concept: VuMark Id", group ="Concept")
-@Disabled
+//@Disabled
 public class ConceptVuMarkIdentification extends LinearOpMode {
 
     public static final String TAG = "Vuforia VuMark Sample";
@@ -103,7 +104,7 @@ public class ConceptVuMarkIdentification extends LinearOpMode {
          * Once you've obtained a license key, copy the string from the Vuforia web site
          * and paste it in to your code onthe next line, between the double quotes.
          */
-        parameters.vuforiaLicenseKey = "ATsODcD/////AAAAAVw2lR...d45oGpdljdOh5LuFB9nDNfckoxb8COxKSFX";
+        parameters.vuforiaLicenseKey = "AZXYlcf/////AAAAGUd2Mb/Ka0uRvj1ckvsptVwC4SPHPsmWUaB95JEgHNSj158K6fnf460Kda2w8JtMGaG3cYlcrx2JzNuIliUgNzgwl7I3eoMZRsfwxvHmT6hms7Z6QyOI/NYZApDXB1X7O2gWFbTUtQzsZD6M9WxwOkAUVPXG/rL0baSqq5mHlgbjbDQ0xbJRR27j+2rFpWt9LZN0H/lFwPst97OdIEEmcRZTvgtTpI8siWJLViiuv2axBiFWvq3u7zxcQbgCASFC9cd7+op/oBXZg9H8Z0CsaplcyS0HsiFJxZIm8LN/J/BwgNuaLpd82D0iFnmcT9R4NVEuQB23zOMA3dG4eiPGFx7VrpjYD1W5QAVzmeNn9aVf";
 
         /*
          * We also indicate which camera on the RC that we wish to use.
@@ -138,7 +139,7 @@ public class ConceptVuMarkIdentification extends LinearOpMode {
              * UNKNOWN will be returned by {@link RelicRecoveryVuMark#from(VuforiaTrackable)}.
              */
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-            if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
+            if (vuMark != RelicRecoveryVuMark.UNKNOWN ){//|| vuMark != RelicRecoveryVuMark.CENTER) {
 
                 /* Found an instance of the template. In the actual game, you will probably
                  * loop until this condition occurs, then move on to act accordingly depending
@@ -168,7 +169,6 @@ public class ConceptVuMarkIdentification extends LinearOpMode {
                     double rZ = rot.thirdAngle;
                 }
             }
-
             else {
                 telemetry.addData("VuMark", "not visible");
             }

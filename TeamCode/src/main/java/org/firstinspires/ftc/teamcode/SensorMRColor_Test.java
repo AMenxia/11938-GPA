@@ -31,15 +31,15 @@ public class SensorMRColor_Test extends LinearOpMode {
 		boolean bPrevState = false;
 		boolean bCurrState = false;
 		boolean bLedOn = true;
-		colorSensor = hardwareMap.get(ColorSensor.class, "sensor_color");
+		colorSensor = hardwareMap.get(ColorSensor.class, "Color_Sensor");
 		colorSensor.enableLed(bLedOn);
 		waitForStart();
 		while (opModeIsActive()) {
-			bCurrState = gamepad1.x;
-			if (bCurrState && (bCurrState != bPrevState))  {
-				bLedOn = !bLedOn;
+//			bCurrState = gamepad1.x;
+//			if (bCurrState && (bCurrState != bPrevState))  {
+//				bLedOn = !bLedOn;
 				colorSensor.enableLed(bLedOn);
-			}
+//			}
 			bPrevState = bCurrState;
 
 			// convert the RGB values to HSV values.
@@ -56,7 +56,7 @@ public class SensorMRColor_Test extends LinearOpMode {
 			// change the background color to match the color detected by the RGB sensor.
 			// pass a reference to the hue, saturation, and value array as an argument
 			// to the HSVToColor method.
-			if(colorSensor.blue() > colorSensor.green() || colorSensor.blue() > colorSensor.red()){
+			if(colorSensor.blue() > colorSensor.green() && colorSensor.blue() > colorSensor.red()){
 				CDI.setLED(1,true);
 				CDI.setLED(0,false);
 				robot.leftMotor.setPower(.5);
